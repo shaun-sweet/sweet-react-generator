@@ -2,9 +2,17 @@
 
 This is an opinionated React Generator that provides some easy to use shortcuts in order to generate react related code.
 
+![Example](./assets/react-generator.gif)
+
 ## Features
 
-Currently, this only generates a ducks folder following the [reducks proposal](https://github.com/alexnm/re-ducks)
+Simply right click in the file explorer in vscode to generate opinionated React Code.
+
+You can - 
+
+
+- Generate a component 
+- Generate a Ducks folder following the [reducks proposal](https://github.com/alexnm/re-ducks)
 
 
 ## Extension Settings

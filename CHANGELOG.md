@@ -4,6 +4,6 @@ All notable changes to the "sweet-react-generator" extension will be documented 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
-
-- Initial release
+## [0.3.0] - 06-26-2019
+### Added
+- Added ability to generate component
