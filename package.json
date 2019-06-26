@@ -19,7 +19,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.createDucks"
+    "onCommand:extension.createDucks",
+    "onCommand:extension.createVanillaFunctionComponent"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -27,12 +28,20 @@
       {
         "command": "extension.createDucks",
         "title": "Create Ducks Folder"
+      },
+      {
+        "command": "extension.createVanillaFunctionComponent",
+        "title": "Create Stateless Function Component"
       }
     ],
     "menus": {
       "explorer/context": [
         {
           "command": "extension.createDucks",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.createVanillaFunctionComponent",
           "group": "navigation"
         }
       ]

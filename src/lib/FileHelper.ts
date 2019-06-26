@@ -34,6 +34,38 @@ export class FileHelper {
     return fileToWrite;
   }
 
+  createVanillaFunctionComponent(
+    targetLocation: string,
+    componentName: string
+  ) {
+    const templateDirectory = this.getVanillaFunctionComponentTemplateDirectory();
+    const componentFiles = fs.readdirSync(templateDirectory);
+
+    componentFiles.forEach(file => {
+      const template = fs
+        .readFileSync(`${templateDirectory}/${file}`)
+        .toString()
+        .replace(/{moduleName}/g, componentName);
+
+      const fileNameArray = file.split(".");
+      let fileNameToWrite: string;
+      const [fileName] = fileNameArray;
+      if (file === "index.template") {
+        fileNameToWrite = `${targetLocation}/${fileName}.js`;
+      } else if (file === "VanillaFunctionComponent.template") {
+        fileNameToWrite = `${targetLocation}/${componentName}.js`;
+      } else {
+        fileNameToWrite = `${targetLocation}/${componentName}.styles.js`;
+      }
+
+      fs.writeFileSync(fileNameToWrite, template);
+    });
+  }
+
+  getVanillaFunctionComponentTemplateDirectory() {
+    return `${this.templatesRootDir}/VanillaFunctionComponent`;
+  }
+
   getDuckTemplateDirectory() {
     return `${this.templatesRootDir}/ducks`;
   }

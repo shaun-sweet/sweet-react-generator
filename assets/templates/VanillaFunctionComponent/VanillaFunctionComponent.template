@@ -1,0 +1,19 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { {moduleName}Wrapper } from './{moduleName}.styles';
+
+const {moduleName} = props => (
+  <{moduleName}Wrapper>
+    This is a {moduleName}
+  </{moduleName}Wrapper>
+);
+
+{moduleName}.propTypes = {
+  // bla: PropTypes.string,
+};
+
+{moduleName}.defaultProps = {
+  // bla: 'test',
+};
+
+export default {moduleName};

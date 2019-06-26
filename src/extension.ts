@@ -35,6 +35,25 @@ export function activate(context: ExtensionContext) {
     }
   );
 
+  const createVanillaFunctionComponent = commands.registerCommand(
+    "extension.createVanillaFunctionComponent",
+    async (uri: Uri) => {
+      const fileHelper = new FileHelper(uri);
+      const componentName =
+        (await window.showInputBox({
+          placeHolder: "Component name?"
+        })) || "ChangeMe";
+
+      const createdDirectory = fileHelper.createDirectory(componentName);
+      
+      fileHelper.createVanillaFunctionComponent(
+        createdDirectory,
+        componentName
+      );
+    }
+  );
+
+  context.subscriptions.push(createVanillaFunctionComponent);
   context.subscriptions.push(createDucks);
 }
 
