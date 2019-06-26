@@ -3,7 +3,7 @@
   "displayName": "vscode-extension-sandbox",
   "description": "Opinionated utility to help scaffold React and related ecosystem code",
   "publisher": "shaun-sweet",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/shaun-sweet/sweet-react-generator.git"
