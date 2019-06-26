@@ -3,7 +3,7 @@
   "displayName": "vscode-extension-sandbox",
   "description": "Opinionated utility to help scaffold React and related ecosystem code",
   "publisher": "shaun-sweet",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "engines": {
     "vscode": "^1.35.0"
   },
