@@ -1,0 +1,14 @@
+import React from 'react';
+import { {moduleName}Wrapper } from './{moduleName}.styles';
+
+type OwnProps = {
+
+}
+
+const {moduleName}: React.FC<OwnProps> = (props) => (
+  <{moduleName}Wrapper>
+    This is a {moduleName}
+  </{moduleName}Wrapper>
+);
+
+export default {moduleName};

@@ -12,19 +12,19 @@ export function activate(context: ExtensionContext) {
   console.log(
     'Congratulations, your extension "sweet-react-generator" is now active!'
   );
-
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
   const createDucks = commands.registerCommand(
     "extension.createDucks",
     async (uri: Uri) => {
-      const fileHelper = new FileHelper(uri);
+      const useTypescript = Boolean(workspace.getConfiguration('SweetReactGenerator').get('useTypescript'));
+      const fileHelper = new FileHelper(uri, useTypescript);
       const ducksModuleName = await window.showInputBox({
         placeHolder: "Ducks module name?"
       });
       const createdDirectory = fileHelper.createDirectory("ducks");
-      const duckTypes = fs.readdirSync(fileHelper.getDuckTemplateDirectory());
+      const duckTypes: string[] = fs.readdirSync(fileHelper.getDuckTemplateDirectory());
 
       duckTypes.forEach(duckType => {
         fileHelper.createDuck(ducksModuleName, createdDirectory, duckType);
@@ -38,7 +38,9 @@ export function activate(context: ExtensionContext) {
   const createVanillaFunctionComponent = commands.registerCommand(
     "extension.createVanillaFunctionComponent",
     async (uri: Uri) => {
-      const fileHelper = new FileHelper(uri);
+      const useTypescript = Boolean(workspace.getConfiguration('SweetReactGenerator').get('useTypescript'));
+      const fileHelper = new FileHelper(uri, useTypescript);
+
       const componentName =
         (await window.showInputBox({
           placeHolder: "Component name?"
