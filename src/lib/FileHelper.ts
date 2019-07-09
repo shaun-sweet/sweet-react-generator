@@ -8,7 +8,7 @@ export class FileHelper {
     __dirname,
     "../../assets/templates"
   );
-  constructor(private uri: Uri) {}
+  constructor(private uri: Uri, private useTypescript: boolean) {}
 
   createDirectory(dirName: string) {
     const contextMenuTargetPath = this.getTargetPath(this.uri.fsPath);
@@ -29,7 +29,9 @@ export class FileHelper {
       .toString()
       .replace(/{moduleName}/g, moduleName);
 
-    const fileToWrite = `${targetLocation}/${duckFileType}.js`;
+    const fileToWrite = this.useTypescript
+      ? `${targetLocation}/${duckFileType}.ts`
+      : `${targetLocation}/${duckFileType}.js`;
     fs.writeFileSync(fileToWrite, indexDuck);
     return fileToWrite;
   }
@@ -51,11 +53,17 @@ export class FileHelper {
       let fileNameToWrite: string;
       const [fileName] = fileNameArray;
       if (file === "index.template") {
-        fileNameToWrite = `${targetLocation}/${fileName}.js`;
+        fileNameToWrite = this.useTypescript
+          ? `${targetLocation}/${fileName}.ts`
+          : `${targetLocation}/${fileName}.js`;
       } else if (file === "VanillaFunctionComponent.template") {
-        fileNameToWrite = `${targetLocation}/${componentName}.js`;
+        fileNameToWrite = this.useTypescript
+          ? `${targetLocation}/${componentName}.tsx`
+          : `${targetLocation}/${componentName}.js`;
       } else {
-        fileNameToWrite = `${targetLocation}/${componentName}.styles.js`;
+        fileNameToWrite = this.useTypescript
+          ? `${targetLocation}/${componentName}.styles.ts`
+          : `${targetLocation}/${componentName}.styles.js`;
       }
 
       fs.writeFileSync(fileNameToWrite, template);
@@ -63,11 +71,18 @@ export class FileHelper {
   }
 
   getVanillaFunctionComponentTemplateDirectory() {
-    return `${this.templatesRootDir}/VanillaFunctionComponent`;
+    const templateDirectory = this.useTypescript
+      ? `${this.templatesRootDir}/typescript/VanillaFunctionComponent`
+      : `${this.templatesRootDir}/VanillaFunctionComponent`;
+
+    return templateDirectory;
   }
 
   getDuckTemplateDirectory() {
-    return `${this.templatesRootDir}/ducks`;
+    const templateDirectory = this.useTypescript
+      ? `${this.templatesRootDir}/ducks`
+      : `${this.templatesRootDir}/ducks`;
+    return templateDirectory;
   }
 
   private getTargetPath(targetLocation: string) {

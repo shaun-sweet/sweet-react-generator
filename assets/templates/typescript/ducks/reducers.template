@@ -1,0 +1,12 @@
+import initialState from './initialState';
+
+const {moduleName}Reducer = (state = initialState, action) => {
+  switch (action.type) {
+  default:
+    return state;
+  }
+};
+
+const reducer = {moduleName}Reducer;
+
+export default reducer;

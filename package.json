@@ -3,7 +3,7 @@
   "displayName": "Sweet React Generator",
   "description": "Opinionated utility to help scaffold React and related ecosystem code",
   "publisher": "shaun-sweet",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/shaun-sweet/sweet-react-generator.git"
@@ -24,6 +24,18 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration": [
+      {
+        "title": "Sweet React Generator Configuration",
+        "properties": {
+          "SweetReactGenerator.useTypescript": {
+            "type": "boolean",
+            "default": false,
+            "description": "Generate templates for typescript instead of vanilla javascript"
+          }
+        }
+      }
+    ],
     "commands": [
       {
         "command": "extension.createDucks",
@@ -56,13 +68,14 @@
   },
   "devDependencies": {
     "@types/mocha": "^2.2.42",
-    "@types/node": "^10.14.10",
-    "tslint": "^5.12.1",
+    "@types/node": "^12.6.1",
+    "tslint": "^5.18.0",
     "typescript": "^3.3.1",
     "vscode": "^1.1.28"
   },
   "dependencies": {
-    "@types/fs-extra": "^7.0.0",
+    "@types/fs-extra": "^8.0.0",
+    "fs": "^0.0.1-security",
     "fs-extra": "^8.0.1"
   }
 }
