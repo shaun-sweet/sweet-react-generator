@@ -16,8 +16,12 @@ You can -
 
 
 ## Extension Settings
-
-** COMING SOON **
+### Typescript
+```json
+{
+  "SweetReactGenerator.useTypescript": true
+}
+```
 
 ## Known Issues
 
